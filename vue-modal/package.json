@@ -1,32 +1,22 @@
 {
-    "name": "vue-modal",
+    "name": "vuety-modal",
     "version": "0.0.1",
-    "homepage": "https://www.primefaces.org/primevue",
+    "homepage": "https://github.com/R1z3/vue-modal.git",
     "repository": {
         "type": "git",
-        "url": "https://github.com/primefaces/primevue.git"
+        "url": "https://github.com/R1z3/vue-modal.git"
     },
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/primefaces/primevue/issues"
+        "url": "https://github.com/R1z3/vue-modal/issues"
     },
     "keywords": [
-        "primevue",
-        "vue",
-        "ui framework",
-        "component framework",
+        "vue modal",
         "ui library",
-        "component library",
-        "material",
-        "bootstrap"
+        "vue 3"
     ],
-    "web-types": "./web-types.json",
-    "vetur": {
-        "tags": "./vetur-tags.json",
-        "attributes": "./vetur-attributes.json"
-    },
     "peerDependencies": {
         "vue": "^3.0.0",
-        "primeicons": "^5.0.0"
+        "gsap": "^3.10.4"
     }
 }
