@@ -1,7 +1,33 @@
-# Vue 3 + Vite
+# Vuety Modal
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## Installation
 
-## Recommended IDE Setup
+```bash
+npm i vuety-modal
+```
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+This package required gsap
+
+```bash
+npm i gsap
+```
+
+## Usage
+
+### Use modal component
+
+```js
+<template>
+  <Modal v-model:show="show">
+    <div class="w-screen sm:w-[500px] h-screen sm:h-[500px] bg-white sm:m-auto">
+      <button @click="show = false">close</button>
+    </div>
+  </Modal>
+</template>
+<script setup>
+import { ref } from "vue";
+import Modal from "vuety-modal/modal"
+
+const show = ref(false);
+</script>
+```
