@@ -4,7 +4,7 @@ export default {
   input: "./src/components/modal/index.js",
   output: [
     {
-      file: "vue-modal/modal/index.js",
+      file: "vuety-modal/modal/index.js",
       format: "es",
     },
   ],

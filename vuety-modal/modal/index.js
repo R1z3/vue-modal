@@ -99,6 +99,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   position: "fixed",
                   top: 0,
                   left: 0,
+                  zIndex: 1001,
                 },
               },
               [
