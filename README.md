@@ -19,7 +19,8 @@ npm i gsap
 ```js
 <template>
   <Modal v-model:show="show">
-    <div class="w-screen sm:w-[500px] h-screen sm:h-[500px] bg-white sm:m-auto">
+    <div class="w-screen sm:w-60 h-screen sm:h-60 bg-white sm:m-auto flex flex-col items-center justify-center p-8">
+      <div>Modal content</div>
       <button @click="show = false">close</button>
     </div>
   </Modal>
