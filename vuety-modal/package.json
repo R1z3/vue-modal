@@ -1,14 +1,14 @@
 {
     "name": "vuety-modal",
-    "version": "0.0.2",
-    "homepage": "https://github.com/R1z3/vue-modal.git",
+    "version": "0.0.4",
+    "homepage": "https://github.com/R1z3/vuety-modal.git",
     "repository": {
         "type": "git",
-        "url": "https://github.com/R1z3/vue-modal.git"
+        "url": "https://github.com/R1z3/vuety-modal.git"
     },
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/R1z3/vue-modal/issues"
+        "url": "https://github.com/R1z3/vuety-modal/issues"
     },
     "keywords": [
         "vue modal",
