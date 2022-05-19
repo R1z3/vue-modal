@@ -1,6 +1,6 @@
 {
     "name": "vuety-modal",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "homepage": "https://github.com/R1z3/vuety-modal.git",
     "repository": {
         "type": "git",
@@ -11,9 +11,9 @@
         "url": "https://github.com/R1z3/vuety-modal/issues"
     },
     "keywords": [
-        "vue modal",
+        "vuety-modal",
         "ui library",
-        "vue 3"
+        "vue3 modal"
     ],
     "peerDependencies": {
         "vue": "^3.0.0",
