@@ -52,7 +52,7 @@ const show = ref(false);
 
 ### Events
 
-| Event | | Type | | Description |
-| :-: | | :-: | | :-: |
-| @open | | Callback | | Callback to invoke when modal is showed. |
-| @close | | Callback | | Callback to invoke when modal is hidden. |
+|Event | Type | Description |
+|------|------|-------------|
+|@open | Callback| Callback to invoke when modal is showed. |
+|@close|Callback |Callback to invoke when modal is hidden. |
