@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Vuety Modal is a modal component library for Vue 3
+Vuety Modal is a modal component library for Vue 3 \
 Soon new features
 
 ## Installation
@@ -34,6 +34,7 @@ app.use(Vuety);
 
 ```js
 <template>
+  <button @click="show = true">open modal</button>
   <Modal v-model:show="show">
     <div class="w-screen sm:w-60 h-screen sm:h-60 bg-white sm:m-auto flex flex-col items-center justify-center p-8">
       <div>Modal content</div>
@@ -48,3 +49,10 @@ import Modal from "vuety-modal/modal"
 const show = ref(false);
 </script>
 ```
+
+### Events
+
+| Event | | Type | | Description |
+| :-: | | :-: | | :-: |
+| @open | | Callback | | Callback to invoke when modal is showed. |
+| @close | | Callback | | Callback to invoke when modal is hidden. |

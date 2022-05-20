@@ -34,6 +34,7 @@ app.use(Vuety);
 
 ```js
 <template>
+  <button @click="show = true">open modal</button>
   <Modal v-model:show="show">
     <div class="w-screen sm:w-60 h-screen sm:h-60 bg-white sm:m-auto flex flex-col items-center justify-center p-8">
       <div>Modal content</div>
@@ -48,3 +49,10 @@ import Modal from "vuety-modal/modal"
 const show = ref(false);
 </script>
 ```
+
+### Events
+
+| Event | | Type | | Description |
+| :-: | | :-: | | :-: |
+| @open | | Callback | | Callback to invoke when modal is showed. |
+| @close | | Callback | | Callback to invoke when modal is hidden. |
