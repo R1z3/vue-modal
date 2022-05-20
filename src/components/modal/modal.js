@@ -1,3 +1,6 @@
+"use strict";
+
+import { ZIndexUtils } from "../../utils/utils";
 import {
   openBlock,
   createBlock,
@@ -12,9 +15,14 @@ import {
 import { gsap, Elastic } from "gsap";
 
 var script = {
+  name: "Modal",
   inheritAttrs: false,
   props: {
     show: Boolean,
+    baseZIndex: {
+      type: Number,
+      default: 0,
+    },
   },
   emit: ["update:show", "open", "close"],
   data() {
@@ -22,6 +30,7 @@ var script = {
       containerShow: this.show,
     };
   },
+  wrapper: null,
   modal: null,
   methods: {
     open() {
@@ -29,6 +38,9 @@ var script = {
     },
     close() {
       this.$emit("update:show", false);
+    },
+    wrapperRef(el) {
+      this.wrapper = el;
     },
     modalRef(el) {
       this.modal = el;
@@ -43,6 +55,12 @@ var script = {
       });
     },
     onEnter(el, done) {
+      ZIndexUtils.set(
+        "modal",
+        this.wrapper,
+        this.baseZIndex + this.$vuety.config.zIndex.modal
+      );
+
       gsap.to(el, {
         opacity: 1,
         scale: 1,
@@ -63,6 +81,9 @@ var script = {
           this.$emit("close"),
         ],
       });
+    },
+    onAfterLeave(el) {
+      ZIndexUtils.clear(this.wrapper);
     },
     onBeforeEnterOverlay(el) {
       gsap.set(el, {
@@ -105,11 +126,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             createBlock(
               "div",
               {
+                ref: $options.wrapperRef,
                 style: {
                   position: "fixed",
                   top: 0,
                   left: 0,
-                  zIndex: 1001,
                 },
               },
               [
@@ -119,6 +140,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     onBeforeEnter: $options.onBeforeEnterOverlay,
                     onEnter: $options.onEnterOverlay,
                     onLeave: $options.onLeaveOverlay,
+                    onAfterLeave: $options.onAfterLeave,
                     appear: "",
                   },
                   {
@@ -180,5 +202,5 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 }
 
 script.render = render;
-script._file = "modal/modal.vue";
+
 export default script;

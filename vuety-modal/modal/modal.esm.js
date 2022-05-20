@@ -1,10 +1,63 @@
 import { openBlock, createBlock, Teleport, createVNode, Transition, withCtx, h, createCommentVNode, renderSlot } from 'vue';
 import { gsap, Elastic } from 'gsap';
 
+function handler() {
+  let zIndexes = [];
+
+  const generateZIndex = (key, baseZIndex) => {
+    let lastZIndex =
+      zIndexes.length > 0
+        ? zIndexes[zIndexes.length - 1]
+        : { key, value: baseZIndex };
+
+    let newZIndex =
+      lastZIndex.value + (lastZIndex.key === key ? 0 : baseZIndex) + 1;
+
+    zIndexes.push({ key, value: newZIndex });
+
+    return newZIndex;
+  };
+
+  const revertZIndex = (zIndex) => {
+    zIndexes = zIndexes.filter((obj) => obj.value !== zIndex);
+  };
+
+  const getCurrentZIndex = () => {
+    return zIndexes.length > 0 ? zIndexes[zIndexes.length - 1].value : 0;
+  };
+
+  const getZIndex = (el) => {
+    return el ? parseInt(el.style.zIndex, 10) || 0 : 0;
+  };
+
+  return {
+    get: getZIndex,
+    set: (key, el, baseZIndex) => {
+      if (el) {
+        el.style.zIndex = String(generateZIndex(key, baseZIndex));
+      }
+    },
+    clear: (el) => {
+      if (el) {
+        revertZIndex(getZIndex(el));
+        el.style.zIndex = "";
+      }
+    },
+    getCurrent: () => getCurrentZIndex(),
+  };
+}
+
+var ZIndexUtils = handler();
+
 var script = {
+  name: "Modal",
   inheritAttrs: false,
   props: {
     show: Boolean,
+    baseZIndex: {
+      type: Number,
+      default: 0,
+    },
   },
   emit: ["update:show", "open", "close"],
   data() {
@@ -12,6 +65,7 @@ var script = {
       containerShow: this.show,
     };
   },
+  wrapper: null,
   modal: null,
   methods: {
     open() {
@@ -19,6 +73,9 @@ var script = {
     },
     close() {
       this.$emit("update:show", false);
+    },
+    wrapperRef(el) {
+      this.wrapper = el;
     },
     modalRef(el) {
       this.modal = el;
@@ -33,6 +90,12 @@ var script = {
       });
     },
     onEnter(el, done) {
+      ZIndexUtils.set(
+        "modal",
+        this.wrapper,
+        this.baseZIndex + this.$vuety.config.zIndex.modal
+      );
+
       gsap.to(el, {
         opacity: 1,
         scale: 1,
@@ -53,6 +116,9 @@ var script = {
           this.$emit("close"),
         ],
       });
+    },
+    onAfterLeave(el) {
+      ZIndexUtils.clear(this.wrapper);
     },
     onBeforeEnterOverlay(el) {
       gsap.set(el, {
@@ -95,11 +161,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             createBlock(
               "div",
               {
+                ref: $options.wrapperRef,
                 style: {
                   position: "fixed",
                   top: 0,
                   left: 0,
-                  zIndex: 1001,
                 },
               },
               [
@@ -109,6 +175,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     onBeforeEnter: $options.onBeforeEnterOverlay,
                     onEnter: $options.onEnterOverlay,
                     onLeave: $options.onLeaveOverlay,
+                    onAfterLeave: $options.onAfterLeave,
                     appear: "",
                   },
                   {
@@ -170,6 +237,5 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 }
 
 script.render = render;
-script._file = "modal/modal.vue";
 
 export { script as default };

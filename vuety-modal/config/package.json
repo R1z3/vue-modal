@@ -1,0 +1,4 @@
+{
+    "main": "./config.cjs.js",
+    "module": "./config.esm.js"
+}

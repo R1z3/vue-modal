@@ -1,0 +1,4 @@
+{
+    "main": "./modal.cjs.js",
+    "module": "./modal.esm.js"
+}
