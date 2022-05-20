@@ -11,8 +11,10 @@ This package required gsap
 ```bash
 npm i gsap
 ```
+
 Next step is setting up Vuety configuration.
-```
+
+```bash
 import {createApp} from 'vue';
 import App from './App.vue';
 import Vuety from 'vuety-modal/config';
