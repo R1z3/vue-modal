@@ -1,5 +1,10 @@
 # Vuety Modal
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+Vuety Modal is a modal component library for Vue 3
+Soon new features
+
 ## Installation
 
 ```bash
