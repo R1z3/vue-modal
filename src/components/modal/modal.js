@@ -1,6 +1,6 @@
 "use strict";
 
-import { ZIndexUtils } from "../../utils/utils";
+import { ZIndexUtils } from "../utils/utils";
 import {
   openBlock,
   createBlock,
