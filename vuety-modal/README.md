@@ -11,12 +11,6 @@ Soon new features
 npm i vuety-modal
 ```
 
-This package required gsap
-
-```bash
-npm i gsap
-```
-
 Next step is setting up Vuety configuration.
 
 ```bash

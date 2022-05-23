@@ -1,6 +1,6 @@
 export default [
   {
-    input: "./src/config/config.js",
+    input: "./src/components/config/config.js",
     output: [
       {
         file: "vuety-modal/config/config.cjs.js",
@@ -17,7 +17,7 @@ export default [
     ],
   },
   {
-    input: "./src/utils/utils.js",
+    input: "./src/components/utils/utils.js",
     output: [
       {
         file: "vuety-modal/utils/utils.cjs.js",
