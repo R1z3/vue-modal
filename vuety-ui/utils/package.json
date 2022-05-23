@@ -1,4 +1,0 @@
-{
-    "main": "./utils.cjs.js",
-    "module": "./utils.esm.js"
-}
