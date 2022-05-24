@@ -33,6 +33,7 @@ function handler() {
     get: getZIndex,
     set: (key, el, baseZIndex) => {
       if (el) {
+        document.body.style.overflowY = "hidden";
         el.style.zIndex = String(generateZIndex(key, baseZIndex));
       }
     },
@@ -41,6 +42,7 @@ function handler() {
         revertZIndex(getZIndex(el));
         el.style.zIndex = "";
       }
+      if (zIndexes.length === 0) document.body.style.overflow = null;
     },
     getCurrent: () => getCurrentZIndex(),
   };
