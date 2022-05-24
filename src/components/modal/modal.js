@@ -11,6 +11,7 @@ import {
   createVNode,
   Transition,
   renderSlot,
+  mergeProps,
 } from "vue";
 import { gsap, Elastic } from "gsap";
 
@@ -177,19 +178,22 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                       $props.show
                         ? h(
                             "div",
-                            {
-                              style: {
-                                width: "100vw",
-                                height: "100vh",
-                                display: "flex",
+                            mergeProps(
+                              {
+                                style: {
+                                  width: "100vw",
+                                  height: "100vh",
+                                  display: "flex",
+                                },
+                                ref: $options.modalRef,
+                                onClick:
+                                  _cache[1] ||
+                                  (_cache[1] = (...args) =>
+                                    $options.onModalClick &&
+                                    $options.onModalClick(...args)),
                               },
-                              ref: $options.modalRef,
-                              onClick:
-                                _cache[1] ||
-                                (_cache[1] = (...args) =>
-                                  $options.onModalClick &&
-                                  $options.onModalClick(...args)),
-                            },
+                              _ctx.$attrs
+                            ),
                             [renderSlot(_ctx.$slots, "default")]
                           )
                         : createCommentVNode("", true),

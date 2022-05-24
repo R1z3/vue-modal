@@ -13,14 +13,13 @@
       <button @click="showTwo = true">open two modal</button>
     </div>
   </Modal>
-  <Modal v-model:show="showTwo">
-    <div class="bg-white w-[500px] h-[500px] rounded-md m-auto"></div>
-  </Modal>
+  <ModalTwo v-model:show="showTwo"></ModalTwo>
 </template>
 
 <script setup>
 import { ref } from "@vue/reactivity";
 import Modal from "./components/modal/modal";
+import ModalTwo from "./components/ModalTwo.vue";
 
 const show = ref(false);
 const showTwo = ref(false);
