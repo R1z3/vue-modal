@@ -110,6 +110,9 @@ var script = {
       this.containerShow = this.show;
     }
   },
+  beforeUnmount() {
+    ZIndexUtils.clear(this.wrapper);
+  },
 };
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
